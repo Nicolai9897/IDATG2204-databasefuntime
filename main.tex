@@ -1,14 +1,88 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[12pt, a4paper]{report}
 
-\title{IDATG2204 databasefuntime}
-\author{nicolaao }
-\date{March 2023}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[table]{xcolor}
+\usepackage{url}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{pdflscape}
+\usepackage{titlesec}
+\usepackage{scrextend}
+\usepackage{tabularx,graphicx}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+
+
+
+
+%Stop chapter function from creating a new page
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}
+\makeatother
+
+\usepackage[style=verbose-ibid,backend=bibtex,style=numeric]{biblatex}
+
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.5cm]{geometry}
+
+
+% remove space above appendix
+\usepackage{appendix, apptools}
+\AtAppendix{
+
+%\titleformat{\chapter}{}{}{0em}{\bf\LARGE}
+  
+\titleformat{\chapter}[display]{\vspace*
+{-50pt}\bfseries\huge}{Attachment~\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}}
+
+%Bib
+\addbibresource{Bibliography.bib}
+\nocite{*}
+%Force url sources to be within margin
+\setcounter{biburllcpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburlnumpenalty}{9000}
 
 \begin{document}
+%Set text to left aligned
+\RaggedRight
 
-\maketitle
+%Title page
+\begin{titlepage}
 
-\section{Introduction}
+    \begin{center}
+    \line(1,0){350}\\
+    [5mm]
+    \large{NTNU}\\
+    \large{\bfseries IDATG2204}\\
+    [4mm]
+   \huge\textbf{\ Project report}\\
+    
+    \line(1,0){350}\\
+
+    \vspace*{\fill}
+    \LARGE{\textsc{\textbf{Written by:}}}\\
+    [4mm]
+    \centering\large{\textsc{Nicolai Olsen\\[1mm] Jakob Behrens\\[1mm]  Kjetil Indrehus\\[1mm] Vegard Johansen \\[1mm] Joachim Olerud Milward}}\\
+    [7mm]
+    \large{\textsc{April 2022}}
+    
+    
+    \end{center}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\input{ReportMain/main}
+
 
 \end{document}
+
+
